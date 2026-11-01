@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>تولدت مبارک ۱۶</title>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;500;800&display=swap" rel="stylesheet">
+<style>
+:root{--g:#f5d27a;--p:#ff4fa3;--v:#8a4dff;color-scheme:dark}
+*{box-sizing:border-box;margin:0}
+html,body{height:100%;background:#000;overflow:hidden;font-family:Vazirmatn,Tahoma,sans-serif;color:#fff}
+#wrap{position:fixed;inset:0;display:flex;align-items:center;justify-content:center}
+#stage{position:relative;aspect-ratio:9/16;height:100%;max-width:100%;overflow:hidden;background:radial-gradient(120% 70% at 50% 25%,#5a0f45,#14031a 50%,#000);container-type:size}
+@media(max-aspect-ratio:9/16){#stage{height:auto;width:100%}}
+canvas{position:absolute;inset:0;width:100%;height:100%}
+.sc{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;transition:opacity 1.4s ease;text-align:center;padding:8%}
+.sc.on{opacity:1}
+.num{font-weight:800;font-size:52cqw;line-height:1;background:linear-gradient(180deg,#fff6d6,#f5d27a 45%,#b8821f);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 0 3cqw rgba(245,210,122,.7)) drop-shadow(0 0 10cqw rgba(255,79,163,.45));transform:scale(.7);transition:transform 6s cubic-bezier(.2,.7,.2,1)}
+.sc.on .num{transform:scale(1)}
+.title{font-weight:800;font-size:11cqw;letter-spacing:0;background:linear-gradient(90deg,#ff9ad0,#fff,#c9a4ff);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 0 4cqw rgba(255,79,163,.6));clip-path:inset(0 0 0 100%);transition:clip-path 2s ease .3s}
+.sc.on .title{clip-path:inset(0 0 0 0)}
+.msg{font-weight:500;font-size:6.4cqw;line-height:1.9;color:#ffe9f4;text-shadow:0 0 3cqw rgba(245,210,122,.6)}
+.msg b{display:block;margin-top:4cqw;font-size:8cqw;font-weight:800;color:var(--g)}
+#photos .ph{position:absolute;inset:7% 8%;border-radius:4cqw;border:.5cqw solid var(--g);box-shadow:0 0 6cqw rgba(255,79,163,.55),0 0 14cqw rgba(138,77,255,.4);background:#1a0a26 center/cover;opacity:0;transform:scale(1.02);transition:opacity 1s}
+#photos .ph.on{opacity:1;animation:kb 5s ease-out forwards}
+.ph.empty{display:flex;align-items:center;justify-content:center;font-size:9cqw;color:var(--g);background:linear-gradient(160deg,#3a0f5a,#6b1646)}
+@keyframes kb{from{transform:scale(1.02)}to{transform:scale(1.09)}}
+#cake svg{width:84%;filter:drop-shadow(0 0 6cqw rgba(255,79,163,.6));animation:fl2 3s ease-in-out infinite}
+.cl{font-weight:800;font-size:9cqw;color:var(--g);margin-top:3cqw;text-shadow:0 0 3cqw var(--p)}
+.flame{transform-origin:center bottom;animation:fk .3s ease-in-out infinite alternate}
+@keyframes fk{from{transform:scale(1,1)}to{transform:scale(.85,1.15)}}
+@keyframes fl2{50%{transform:translateY(-2cqw)}}
+.fl{position:absolute;bottom:-12cqw;font-size:9cqw;opacity:.95;animation:fup linear forwards;filter:drop-shadow(0 0 2cqw var(--p))}
+@keyframes fup{25%{transform:translate(6cqw,-35cqh) rotate(10deg)}50%{transform:translate(-6cqw,-70cqh) rotate(-10deg)}75%{transform:translate(6cqw,-100cqh)}to{transform:translate(0,-130cqh)}}
+#photos:after{content:"👑";position:absolute;top:1.5%;left:50%;transform:translateX(-50%);font-size:13cqw;z-index:3;filter:drop-shadow(0 0 3cqw #f5d27a)}
+#flash{position:absolute;inset:0;background:#fff;opacity:0;pointer-events:none;mix-blend-mode:overlay}
+#vig{position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle,transparent 50%,rgba(0,0,0,.65));}
+.bar{position:absolute;left:0;right:0;height:6%;background:#000;z-index:5}
+.bar.t{top:0}.bar.b{bottom:0}
+.bl{position:absolute;bottom:-20cqw;width:11cqw;height:14cqw;border-radius:50% 50% 48% 48%;opacity:.85;animation:up linear forwards}
+.bl:after{content:"";position:absolute;left:50%;top:100%;width:.3cqw;height:18cqw;background:rgba(255,255,255,.4)}
+@keyframes up{to{transform:translateY(-130cqh) rotate(8deg)}}
+#ui{position:fixed;inset:0;z-index:20;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;background:rgba(5,0,10,.92);padding:24px;text-align:center}
+#ui h1{font-size:26px;font-weight:800;color:var(--g)}
+#ui p{font-size:14px;color:#d9c8e6;max-width:340px;line-height:1.8}
+.btn,label.btn{font:inherit;cursor:pointer;border:0;border-radius:99px;padding:12px 26px;color:#fff;background:linear-gradient(90deg,var(--p),var(--v));font-weight:800}
+label.btn.s{background:#2b1640;border:1px solid var(--g);color:var(--g);font-weight:500}
+#ui input[type=file]{display:none}
+#ui .row{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+#bpm{width:70px;text-align:center;border-radius:8px;border:1px solid var(--g);background:#14091f;color:#fff;padding:6px;font:inherit}
+</style></head><body>
+<div id="wrap"><div id="stage">
+<canvas id="cv"></canvas>
+<div class="sc" id="s1"><div class="num">۱۶</div></div>
+<div class="sc" id="s2"><div class="title">تولدت مبارک</div></div>
+<div class="sc" id="cake"><svg viewBox="0 0 300 380"><defs><linearGradient id="a" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffb3dc"/><stop offset="1" stop-color="#ff4fa3"/></linearGradient><linearGradient id="b" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#c9a4ff"/><stop offset="1" stop-color="#7a3df0"/></linearGradient><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff2c7"/><stop offset="1" stop-color="#d9a441"/></linearGradient></defs><ellipse cx="150" cy="352" rx="140" ry="16" fill="#f5d27a"/><rect x="20" y="250" width="260" height="100" rx="18" fill="url(#a)"/><path d="M20 275q15 22 30 0t30 0 30 0 30 0 30 0 30 0 30 0 30 0v-8h-240z" fill="#fff" opacity=".85"/><rect x="55" y="170" width="190" height="86" rx="16" fill="url(#b)"/><path d="M55 192q16 20 32 0t32 0 32 0 32 0 32 0v-8h-160z" fill="#fff" opacity=".85"/><rect x="90" y="102" width="120" height="74" rx="14" fill="url(#g)"/><text x="150" y="155" text-anchor="middle" font-size="46" font-weight="800" fill="#a8183f" font-family="Vazirmatn,Tahoma">۱۶</text><g fill="#fff" stroke="#ff4fa3" stroke-width="3"><rect x="108" y="66" width="10" height="38" rx="3"/><rect x="145" y="60" width="10" height="44" rx="3"/><rect x="182" y="66" width="10" height="38" rx="3"/></g><g class="flame" fill="#ffd25a"><path class="flame" d="M113 64c-9-12 0-22 0-30 9 8 9 20 0 30z"/><path class="flame" d="M150 58c-9-12 0-22 0-30 9 8 9 20 0 30z"/><path class="flame" d="M187 64c-9-12 0-22 0-30 9 8 9 20 0 30z"/></g><g font-size="22"><text x="34" y="242">💖</text><text x="246" y="242">💖</text><text x="118" y="98">👑</text></g></svg><div class="cl">✨ آرزو کن ✨</div></div>
+<div class="sc" id="photos" style="padding:0"></div>
+<div class="sc" id="s4"><div class="num" style="font-size:70cqw">۱۶</div></div>
+<div class="sc" id="s5"><div class="msg"><div style="font-size:16cqw;margin-bottom:3cqw">👑</div>۱۶ سالگی‌ات شروع قشنگ‌ترین فصل زندگیته؛<br>همیشه بخند، بدرخش و خاص بمون.<b>تولدت مبارک فرشته قشنگمون ❤️</b></div></div>
+<div id="flash"></div><div id="vig"></div><div class="bar t"></div><div class="bar b"></div>
+</div></div>
+<div id="ui">
+<h1>✨ کلیپ تولد ۱۶ سالگی ✨</h1>
+<p>برای پخش با صدا، آهنگ «ساوادکا» (یا هر آهنگ بلک‌پینک) را از گوشی خودت انتخاب کن و عکس‌ها را اضافه کن. ریتم افکت‌ها با BPM تنظیم می‌شود.</p>
+<div class="row">
+<label class="btn s">🎵 انتخاب آهنگ<input type="file" id="au" accept="audio/*"></label>
+<label class="btn s">🖼 انتخاب عکس‌ها<input type="file" id="im" accept="image/*" multiple></label>
+</div>
+<div class="row" style="align-items:center;font-size:14px">BPM آهنگ: <input id="bpm" type="number" value="120" min="60" max="200"></div>
+<button class="btn" id="go">▶ پخش کلیپ</button>
+</div>
+<script>
+const $=id=>document.getElementById(id),cv=$('cv'),c=cv.getContext('2d');
+let W,H,P=[],mode='dust',beat=0,imgs=[],audio=null,t0=0,timers=[],bpm=120;
+function rs(){const r=cv.getBoundingClientRect();W=cv.width=r.width*devicePixelRatio;H=cv.height=r.height*devicePixelRatio}
+addEventListener('resize',rs);rs();
+const cols=['#f5d27a','#ff4fa3','#b98aff','#fff2c7'];
+function mk(conf){const d=devicePixelRatio;return{x:Math.random()*W,y:conf?-20:Math.random()*H,r:(conf?4+Math.random()*7:1+Math.random()*3)*d,vx:(Math.random()-.5)*(conf?2:.4)*d,vy:(conf?2+Math.random()*3:-(.2+Math.random()*.6))*d,c:cols[Math.random()*4|0],a:Math.random(),w:Math.random()*6,conf}}
+for(let i=0;i<110;i++)P.push(mk(false));
+function loop(){c.clearRect(0,0,W,H);c.globalCompositeOperation='lighter';
+if(mode==='conf'&&P.length<420&&Math.random()<.9)for(let i=0;i<3;i++)P.push(mk(true));
+for(let i=P.length-1;i>=0;i--){const p=P[i];p.x+=p.vx+Math.sin(p.w+=.04)*.5;p.y+=p.vy;
+if(p.conf){c.save();c.translate(p.x,p.y);c.rotate(p.w);c.globalAlpha=.9;c.fillStyle=p.c;if(p.a<.25){c.font=p.r*3+'px serif';c.fillText('♥',0,0)}else if(p.a<.4){c.font=p.r*3+'px serif';c.fillText('★',0,0)}else c.fillRect(-p.r,-p.r/2,p.r*2,p.r);c.restore();if(p.y>H+20){mode==='conf'?Object.assign(p,mk(true)):P.splice(i,1)}}
+else{const g=c.createRadialGradient(p.x,p.y,0,p.x,p.y,p.r*4);const tw=.35+.65*Math.abs(Math.sin(p.w+p.a*9));g.addColorStop(0,p.c);g.addColorStop(1,'transparent');c.globalAlpha=tw*(.5+beat*.5);c.fillStyle=g;c.beginPath();c.arc(p.x,p.y,p.r*4,0,7);c.fill();if(p.y<-20){p.y=H+10;p.x=Math.random()*W}}}
+c.globalCompositeOperation='source-over';c.globalAlpha=1;beat*=.92;requestAnimationFrame(loop)}
+loop();
+const sc=id=>$(id),show=(...a)=>{['s1','s2','cake','photos','s4','s5'].forEach(i=>sc(i).classList.toggle('on',a.includes(i)))};
+function at(ms,f){timers.push(setTimeout(f,ms))}
+function flash(){const f=$('flash');f.style.transition='none';f.style.opacity=.9;requestAnimationFrame(()=>{f.style.transition='opacity .45s';f.style.opacity=0});beat=1}
+function fl(a,n){for(let i=0;i<n;i++){const b=document.createElement('div');b.className='fl';b.textContent=a[i%a.length];b.style.left=Math.random()*88+'%';b.style.animationDuration=(8+Math.random()*5)+'s';b.style.animationDelay=Math.random()*3+'s';$('stage').insertBefore(b,$('flash'));setTimeout(()=>b.remove(),15000)}}
+function balloons(n){fl(['🦋','💖','⭐','🎀','💎','🦋'],12);for(let i=0;i<n;i++){const b=document.createElement('div');b.className='bl';b.style.left=Math.random()*88+'%';const k=['#ff4fa3','#8a4dff','#f5d27a'][i%3];b.style.background=`radial-gradient(circle at 35% 30%,#fff9,${k} 45%,${k}aa)`;b.style.boxShadow=`0 0 4cqw ${k}88`;b.style.animationDuration=(7+Math.random()*5)+'s';b.style.animationDelay=(Math.random()*3)+'s';$('stage').insertBefore(b,$('flash'));setTimeout(()=>b.remove(),14000)}}
+function slides(from,to,step){const box=$('photos');box.innerHTML='';const n=Math.max(imgs.length,5);
+const items=[];for(let i=0;i<n;i++){const d=document.createElement('div');d.className='ph';if(imgs.length)d.style.backgroundImage=`url(${imgs[i%imgs.length]})`;else{d.classList.add('empty');d.textContent=['✨','💖','🎂','🎀','👑'][i%5]}box.appendChild(d);items.push(d)}
+let k=0;for(let ms=from;ms<to;ms+=step){const idx=k++%n;at(ms,()=>{items.forEach(x=>x.classList.remove('on'));void items[idx].offsetWidth;items[idx].classList.add('on');flash()})}}
+function play(){$('ui').style.display='none';bpm=+$('bpm').value||120;const bt=60000/bpm;
+if(audio){audio.currentTime=0;audio.play()}
+timers.forEach(clearTimeout);timers=[];mode='dust';show();
+const T=bt*8;// 2 bars intro
+at(1200,()=>show('s1'));at(1200+T*.9,()=>{show('s2');flash()});
+const cs=T*1.9;at(cs,()=>{show('cake');mode='conf';balloons(10);flash()});const ps=cs+bt*8;at(ps,()=>{show('photos');balloons(6)});
+const pe=ps+bt*4*8;slides(ps,pe,bt*4);
+at(pe,()=>{show('s4');flash()});for(let i=1;i<8;i++)at(pe+i*bt,flash);
+at(pe+bt*8,()=>{mode='dust';balloons(8);show('s5')});
+at(pe+bt*8+14000,()=>{$('ui').style.display='flex';audio&&audio.pause()})}
+$('go').onclick=play;
+$('au').onchange=e=>{const f=e.target.files[0];if(f){audio=new Audio(URL.createObjectURL(f))}};
+$('im').onchange=e=>{imgs=[...e.target.files].map(f=>URL.createObjectURL(f))};
+</script></body></html>
